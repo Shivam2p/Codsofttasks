@@ -13,8 +13,8 @@ public class NumberGuessingGame {
         System.out.println("Welcome to the Number Guessing Game!");
 
         while (playAgain) {
-            int randomNumber = random.nextInt(100) + 1;  // Generate a number between 1 and 100
-            int attempts = 5;  // Limit the number of attempts
+            int randomNumber = random.nextInt(100) + 1;  
+            int attempts = 5;  
             int score = 0;
             boolean guessedCorrectly = false;
 
@@ -27,7 +27,7 @@ public class NumberGuessingGame {
                 if (userGuess == randomNumber) {
                     System.out.println("Congratulations! You guessed the correct number!");
                     guessedCorrectly = true;
-                    score = attempts * 10;  // Score is based on remaining attempts
+                    score = attempts * 10;  
                     break;
                 } else if (userGuess < randomNumber) {
                     System.out.println("Too low! Try again.");
@@ -47,9 +47,9 @@ public class NumberGuessingGame {
             System.out.println("Score for this round: " + score);
             System.out.println("Total score: " + totalScore);
 
-            // Ask if the user wants to play another round
+            
             System.out.print("Do you want to play another round? (yes/no): ");
-            scanner.nextLine();  // Consume newline character
+            scanner.nextLine();  
             String response = scanner.nextLine();
             if (!response.equalsIgnoreCase("yes")) {
                 playAgain = false;

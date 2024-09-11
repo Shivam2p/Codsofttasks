@@ -4,12 +4,12 @@ import java.util.TimerTask;
 
 public class QuizGame {
 
-    // Timer related variables
-    private static final int TIME_LIMIT = 10;  // Time limit for each question in seconds
+   
+    private static final int TIME_LIMIT = 10;  
     private static Timer timer;
     private static boolean timeUp = false;
     
-    // Quiz data (questions, options, and correct answers)
+
     static String[] questions = {
         "1. What is the capital of France?",
         "2. Who wrote 'Romeo and Juliet'?",
@@ -35,32 +35,32 @@ public class QuizGame {
 
         System.out.println("Welcome to the Quiz Game!");
 
-        // Iterate over all questions
+    
         for (int i = 0; i < questions.length; i++) {
             timeUp = false;
 
-            // Display the question and options
+            
             System.out.println("\n" + questions[i]);
             for (String option : options[i]) {
                 System.out.println(option);
             }
 
-            // Start the timer for the question
+          
             startTimer(TIME_LIMIT);
 
             System.out.print("Enter your answer (A, B, C, or D) within " + TIME_LIMIT + " seconds: ");
             String answer = scanner.nextLine().toUpperCase();
 
-            // Check if the timer has expired
+            
             if (timeUp) {
                 System.out.println("Time's up! No answer submitted.");
-                userAnswers[i] = 'X';  // 'X' for no answer
+                userAnswers[i] = 'X';  
             } else if (answer.length() == 1 && answer.charAt(0) >= 'A' && answer.charAt(0) <= 'D') {
                 userAnswers[i] = answer.charAt(0);
-                // Stop the timer since the answer was submitted in time
+             
                 timer.cancel();
 
-                // Check if the answer is correct
+                
                 if (userAnswers[i] == correctAnswers[i]) {
                     System.out.println("Correct!");
                     score++;
@@ -69,11 +69,11 @@ public class QuizGame {
                 }
             } else {
                 System.out.println("Invalid answer! Moving to the next question.");
-                userAnswers[i] = 'X';  // 'X' for invalid answer
+                userAnswers[i] = 'X';  
             }
         }
 
-        // Display the result screen
+        
         System.out.println("\n--- Quiz Over! ---");
         System.out.println("Your final score is: " + score + "/" + questions.length);
         System.out.println("Here's a summary of your answers:");
@@ -87,7 +87,7 @@ public class QuizGame {
         scanner.close();
     }
 
-    // Timer function to limit the time for answering a question
+    
     public static void startTimer(int seconds) {
         timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -102,6 +102,6 @@ public class QuizGame {
                     timer.cancel();
                 }
             }
-        }, 0, 1000);  // Schedule task to run every second
+        }, 0, 1000); 
     }
 }
